@@ -1,0 +1,189 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>CATCH ME IF U CAN !</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1;"> 
+  <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=9" />
+
+  <meta property="og:title" content="CATCH ME IF U CAN !" />
+  <meta property="og:description" content="Entertainig game where in you just have to catch the right crab" />
+  <meta property="og:url" content="http://catchme-007.appspot.com"/>
+  <meta property="og:image" content="http://catchme-007.appspot.com/images/crab.png" />
+  <link rel="shortcut icon" href="images/favicon.ico">
+
+  <script src="js/jquery-1.9.1.js"> </script>
+  <script src="js/energize-min.js"></script>
+  <link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
+  <script src="js/jquery.mobile-1.3.2.js"></script>
+  <link rel="stylesheet" href="css/jquery.simpledialog.min.css" />
+  <script src="js/jquery.simpledialog.min.js"></script>
+  <link rel="stylesheet" href="css/custom.css" />
+  <script src="js/custom.js"></script>
+  
+
+  <script type="text/javascript">
+
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    function onBackKeyDown() {
+    }
+
+    // $(document).bind("mobileinit", function(){
+    //   function isAppleDevice(){
+    //     return (
+    //       (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
+    //       (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
+    //       (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
+    //       );
+    //   }
+    //   if(!isAppleDevice()){
+    //     $.mobile.defaultPageTransition = 'none';
+    //     $.mobile.defaultDialogTransition = 'none';
+    //     $.mobile.buttonMarkup.hoverDelay = 0; 
+    //   }
+      $.mobile.autoInitializePage = false;
+      
+      // ie 9 fix
+      //reset type=date inputs to text
+        $.mobile.page.prototype.options.degradeInputs.date = true;
+        $.extend($.mobile, {
+            //extend gradeA qualifier to include IE7+
+                gradeA: function() {
+                    //IE version check by James Padolsey, modified by jdalton - from http://gist.github.com/527683
+                        var ie = (function() {
+                            var v = 3, div = document.createElement('div'), a = div.all || [];
+                                while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]);
+                                    return v > 4 ? v : !v;
+                        }());
+                        //must either support media queries or be IE7+
+                        return $.support.mediaquery || (ie && ie >= 7);
+                }
+        });
+      
+
+    });
+  </script>
+
+</head>	
+<body> 
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+<!-- =====================================LAUNCH==================================== -->
+  <div data-role="page" id="launch">
+
+    <div data-role="header"><!-- /header -->
+        <div id="heading"></div>         
+    </div>
+
+    <div data-role="content" id="launch_content">   
+       <img class="logo" src="images/logo.png"><br>
+       <img class="pic" id="start_btn" src="images/start.png">
+       <br><br><br>
+       <div>
+       <p>CLICK ON THE START BUTTON TO START THE GAME </p>
+          
+
+        RULES:
+        <ul>
+            <li>CLICK ON YELLOW CRAB AND CATCH IT WITH IN A MINUTE.</li>
+            <br>
+            <li>IF EVER YOU CLICK ON RED CRAB, THEN YOU ARE DEAD.</li>
+            <br>
+        </ul>
+       </div>
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+      
+    </div><!-- /footer -->
+  </div> 
+
+
+<!-- ===================================PLAY============================================== -->
+  <div data-role="page" id="play">
+
+    <div data-role="header" id="title"><!-- /header -->
+        <div class="time"> <span id="min">1</span>:<span id="sec">0 </span> </div> 
+        <div id="heading">CATCH ME IF YOU CAN !</div> 
+        <div id="stage"></div>
+    </div>
+
+    <div id="box"> 
+        <!-- <marquee id="adds" loop="-1" scrollamount="2" width="100%">Adds are displayed here...!!!</marquee> -->
+        <br>
+    </div>
+
+    <div data-role="content" id="play_content">   
+        <div id="move1" class="move crab1"><img src="images/crab1.png"></div> 
+        <div id="move2" class="move crab2"><img src="images/crab2.png"></div> 
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+      
+    </div><!-- /footer -->
+  </div> 
+
+<!-- ============================================LAUNCH================================== -->
+  <div data-role="page" id="result">
+
+    <div data-role="header"><!-- /header -->
+        <div id="heading">CATCH ME IF YOU CAN !</div>         
+    </div>
+
+    <div data-role="content" id="result_content">   
+      <br><br><br><br>
+      <ul data-role="listview" id="result_block1" data-inset="true" class="ui-listview" data-theme="b">
+        <li>Time<p class="ui-li-aside" id="score"></p></li>
+      </ul>
+
+      <ul data-role="listview" id="result_block2" data-inset="true" class="ui-listview" data-theme="b">
+        <li>Best Time <p class="ui-li-aside" id="high_score"></p></li>
+      </ul>
+      
+
+      <a href='#play' class="btn-rectangle" id='restart' data-role="button" data-inline="true" data-theme='b'>
+        Restart</a>
+
+      <a href='#launch' class="btn-rectangle" data-role='button' data-inline='true' data-theme='b'>
+        Home</a>
+      <div id="social_media">
+        <div class="fb-share-button" data-href="http://catchme-007.appspot.com/" data-type="button"></div>
+        &nbsp;
+        <div class="fb-like" data-href="http://catchme-007.appspot.com/" data-width="50" data-layout="button" data-action="like" data-show-faces="true"></div>
+        &nbsp;
+       <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://catchme-007.appspot.com/" data-related="httpcatchme007appspotcom" data-count="none" data-hashtags="_kenith_">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        &nbsp;
+        <div class="g-plus" data-action="share" data-annotation="none"></div>
+      </div>
+    </div>
+
+    <div data-role="footer" id="result_footer" data-position="fixed" data-iconpos="top">
+    <div data-role="navbar">
+      <ul><li>
+        Copyright © "Catch me if u can" 2014. All Rights Reserved. Designed & Developed by Kenith Aiyappa 
+      <a id="result_footer_contact" href="mailto:kenith.777@gmail.com?subject=Website Design client contact">Contact Me.</a>
+      </li></ul>
+    </div>
+    </div><!-- /footer -->
+  </div> 
+
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/platform.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+</body>
+</html>

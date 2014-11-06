@@ -1,0 +1,195 @@
+
+*{
+ cursor: pointer;
+}
+.standard{
+    font-size: 35px;
+}
+.narrow{
+    font-size: 30px;
+}
+.extraNarrow{
+    font-size: 15px;
+}
+
+h2{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #129FD2 !important;
+}
+
+body{
+    margin: 0;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.ui-header{
+    width:100%;
+    height:45px;
+    /*color: #FFFFFF;*/
+    position:relative !important;
+    /*font-size: 25px !important;*/
+    display: block !important;
+    text-align: center !important;
+    background-color:#60B3EE !important;
+} 
+
+.time{
+    float: left;
+    display: inline;
+    font-family: Comic;
+    border: 1px solid #FFF;
+    margin: 0.5%;
+    width: 15%;
+    }
+
+#stage{
+    float: right;
+    display: inline;
+    /*border: 1px solid #FFF;*/
+    margin: 0.5%;
+    white-space: normal !important;
+    word-wrap:break-word !important;
+    width: 25%;
+}
+
+#heading{
+    display:inline-block;
+    margin: 0.5% !important;
+    white-space: normal !important;
+    word-wrap:break-word !important;
+    width: 50%;
+    }
+
+#box{
+    width:100%;
+    height:100% !important;
+    display: block;
+}
+
+
+.move{
+    border: 0 !important;
+    position:absolute; 
+    left: 250px;
+    top:250px;
+	}		
+.move img{
+    border: 0  !important;
+}
+
+.btn-rectangle{
+    width: 90px !important;
+    background: #129FD2 !important;
+}
+.btn-rectangle .ui-btn-inner{
+    padding: 7px !important;
+}
+
+
+#launch_content{
+    text-align: center;
+}
+
+#launch_content div{
+    text-align: left;
+}
+
+#play_content{
+    border: 2px #000 solid;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    position: relative;
+    text-align: center;
+    background: #fff url(../images/water.jpg) repeat;
+}
+
+#result_content{
+    text-align: center;
+}
+
+
+/*----------------------------------ALERTBOX2-------------------------------------*/
+.ui-simpledialog-container{
+    border: 0 !important;
+    -webkit-border-radius: 1.2em !important;
+    border-radius: 1.2em !important;
+    width: 250px !important;
+}
+.alertBoxContents{
+    background:#00BFFF !important;
+    color: #FFFFFF;
+    -webkit-border-radius: 1.2em !important;
+    border-radius: 1.2em !important;
+    font-size: 15px !important;
+    padding: 10px;
+    text-align: center;
+}
+
+.alert_close_btn{
+    height: 27px !important;
+    width: 64px !important;
+}
+
+.alertBoxContents .ui-btn-inner {
+    font-size: 13px !important;
+    padding: 0.4em 10px !important;
+}
+
+/*----------------------------------END-------------------------------------*/
+#result_block1{
+    border: 2px solid #15D5C8 !important;
+
+}
+#result_block1 li{
+    border: 0 !important;
+    background: #15D5C8;
+}
+#result_block2 li{
+    border: 0 !important;
+    background: #E11A1A;
+}
+
+li p{
+    font-weight: bold !important;
+}
+
+/*----------------------------------END-------------------------------------*/
+
+
+.ui-loader{
+    display: none !important;
+}
+
+#social_media{
+    margin-top: 55px;
+}
+
+#___plus_0,#twitter-widget-0{
+    top: 5px;
+    position: relative;
+}
+
+#result_footer{
+    background: #FFF;
+    color: #000;
+    font-size: 10px;
+    text-align: center;
+    border: 0 !important;
+    font-weight: normal !important;
+}
+
+#result_footer_contact{
+    display: inline !important; 
+    background: #FFF;
+    color: #000;
+    font-size: 10px !important;
+}
+#result_footer_contact .ui-btn-inner{
+    display: inline !important; 
+    background: #FFF;
+    color: #000;
+    font-size: 10px !important;
+    padding: 0;
+    font-weight: bold;
+}
