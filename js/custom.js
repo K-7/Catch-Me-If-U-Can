@@ -3,7 +3,7 @@ jQuery(function() {
 	$(document).bind('selectstart dragstart', function(evt)
     	{ evt.preventDefault(); return false; });
 
-    var c;
+    var count_down_timer;
             
     $(function(){
       var viewPortWidth = $(window).width();
@@ -101,8 +101,7 @@ jQuery(function() {
     });
 
     $("#launch").on("pagebeforeshow",function(event, ui) {
-        
-        
+        halt();
     })
 
     $("#play").on("pagebeforeshow",function(event, ui) {
@@ -123,7 +122,7 @@ jQuery(function() {
         sec = 60;
         min = min - 1;
         
-        c = self.setInterval(function(){count()},1000);
+        count_down_timer = self.setInterval(function(){count()},1000);
         function count()
         {
             sec = sec - 1;
@@ -133,9 +132,10 @@ jQuery(function() {
             }
         if (min < 0)
             {
-            window.clearInterval(c);
             halt();
-            alertBox("Time out try again","reload");
+            var activepage = $.mobile.activePage.attr("id");
+            if (activepage == "play")
+            {alertBox("Time out try again","reload");}
             }
         else
             { 
@@ -146,6 +146,7 @@ jQuery(function() {
     });
 
     function halt(){
+        window.clearInterval(count_down_timer);
         $('#move1').removeClass('crab1');
         $('#move2').removeClass('crab2');
     }
@@ -154,7 +155,6 @@ jQuery(function() {
        
         if($(this).attr("id") == "move2")
         {
-           window.clearInterval(c);
            halt();
            alertBox("Oops !! caught the Dangerous crab. Game Over, Try again..","reload");
         }
@@ -163,23 +163,17 @@ jQuery(function() {
         if($(this).attr("id") == "move1")
         {
             halt();
-            window.clearInterval(c);
             var sec = parseInt($('#sec').text());
             var min = parseInt($('#min').text());
-            if(min != 0)
-            {
-                var time = 60 - sec;
-                time = time + 60;
-            }
-            else
-            {var time = 60 - sec;}
+            
+            var time = 60 - ((min*60)+sec);
             
             
             localStorage["score"] = JSON.stringify(time);
             if(localStorage.getItem('high_score'))
             {
                 var high_score = localStorage.getItem('high_score')
-                if(high_score.sec > time)
+                if(high_score > time)
                 {localStorage["high_score"] = JSON.stringify(time);}
             }
             else
@@ -192,6 +186,7 @@ jQuery(function() {
 
 
     $("#result").on("pagebeforeshow",function(event, ui) {
+        halt();
         var high_score = localStorage.getItem('high_score')
         var score = localStorage.getItem('score')
         $("#score").text(score+" sec")
